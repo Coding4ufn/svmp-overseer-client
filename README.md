@@ -60,7 +60,8 @@ Get a User
    updateUser(username, updates, callback)
 ```
 
-Update a given user (by username). *updates* is object with the fields and values to update: `{email: 'new@here.com'}`
+Update a given user (by username). *updates* is an object with the fields and values to update: 
+`{email: 'new@here.com'}`
 
 
 ```javascript
