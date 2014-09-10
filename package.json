@@ -1,0 +1,29 @@
+{
+    "name": "svmp-overseer-client",
+    "version": "0.0.1",
+    "description": "API client for Overseer",
+    "keywords": [
+        "SVMP",
+        "Overseer",
+        "API"
+    ],
+    "author": "Dave Bryson",
+    "license": "Apache-2.0",
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.4.x"
+    },
+    "private": true,
+    "dependencies": {
+        "superagent": "0.18.2",
+        "grunt-cli": "~0.1.13"
+    },
+    "devDependencies": {
+        "mocha": "latest",
+        "supertest": "latest",
+        "grunt": "~0.4.5",
+        "grunt-env": "~0.4.1",
+        "grunt-mocha-test": "~0.10.0",
+        "load-grunt-tasks": "~0.4.0"
+    }
+}
