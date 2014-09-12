@@ -14,6 +14,7 @@
  * limitations under the License.
  *
  * author Dave Bryson
+ * author Joe Portner
  *
  */
 
@@ -35,7 +36,7 @@ var
 /**
  * Create an API client
  * @param baseurl. ex: http://localhost:3000
- * @param token. The svmp token. The app requires a token with admin priviledges
+ * @param token. The svmp token. The app requires a token with admin privileges
  * @constructor
  */
 var Overseer = function (baseurl, token) {
@@ -149,7 +150,6 @@ Overseer.prototype.listVolumes = function (callback) {
         .end(callback);
 };
 
-
 /**
  * Assign an existing VM Volume(s) to a User
  * @param username
@@ -188,7 +188,6 @@ Overseer.prototype.createVolume = function (username, callback) {
         .end(callback);
 };
 
-
 /**
  * Create and start a VM for a User
  * @param username
@@ -201,8 +200,32 @@ Overseer.prototype.setupVM = function (username, callback) {
         .end(callback);
 };
 
+/**
+ * Create a VM Session for a user
+ * @param username of user
+ * @param connectTime, Date the user opened this connection
+ * @param expireAt, Date the VM Session expires
+ * @param callback
+ */
+Overseer.prototype.createVMSession = function (username, connectTime, expireAt, callback) {
+    var url = this._makeUrl('/services/vm-session');
+    agent.post(url)
+        .set('svmp-authtoken', this.token)
+        .send({username: username, connectTime: connectTime, expireAt: expireAt})
+        .end(callback);
+};
 
-
-
-
-
+/**
+ * Update a VM Session for a user
+ * @param username of user
+ * @param connectTime, Date the user opened this connection
+ * @param lastAction, Date the user disconnected
+ * @param callback
+ */
+Overseer.prototype.updateVMSession = function (username, connectTime, lastAction, callback) {
+    var url = this._makeUrl('/services/vm-session');
+    agent.put(url)
+        .set('svmp-authtoken', this.token)
+        .send({username: username, connectTime: connectTime, lastAction: lastAction})
+        .end(callback);
+};
