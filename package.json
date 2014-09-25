@@ -1,6 +1,6 @@
 {
     "name": "svmp-overseer-client",
-    "version": "0.0.1",
+    "version": "2.0.0",
     "description": "API client for Overseer",
     "keywords": [
         "SVMP",
